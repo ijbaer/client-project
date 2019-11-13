@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<!-- saved from url=(0027)https://michaelannedye.com/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://michaelannedye.com/xmlrpc.php">
+
+<title>Michaelanne Dye – Presidential Postdoc, School of Information, University of Michigan</title>
+
+<!-- Async WordPress.com Remote Login -->
+<script id="twitter-wjs" src="./Michaelanne Dye – Presidential Postdoc, School of Information, University of Michigan_files/widgets.js"></script><script id="wpcom_remote_login_js">
+var wpcom_remote_login_extra_auth = '';
+function wpcom_remote_login_remove_dom_node_id( element_id ) {
+	var dom_node = document.getElementById( element_id );
+	if ( dom_node ) { dom_node.remove(); }
+}
+function wpcom_remote_login_remove_dom_node_classes( class_name ) {
+	var dom_nodes = document.querySelectorAll( '.' + class_name );
+	for ( var i = 0; i < dom_nodes.length; i++ ) {
+		dom_nodes[i].remove();
+	}
+}
+function wpcom_remote_login_final_cleanup() {
+	wpcom_remote_login_remove_dom_node_classes( "wpcom_remote_login_msg" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_validate" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_js" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_iframe" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_styles" );
+}
+
+// Watch for messages back from the remote login
+window.addEventListener( "message", function( e ) {
+	if ( e.origin === "https://r-login.wordpress.com" ) {
+		var data = {};
+		try {
+			data = JSON.parse( e.data );
+		} catch( e ) {
+			wpcom_remote_login_final_cleanup();
+			return;
+		}
+
+		if ( data.msg === 'LOGIN' ) {
+			// Clean up the login check iframe
+			wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+
+			var id_regex = new RegExp( /^[0-9]+$/ );
+			var token_regex = new RegExp( /^.*|.*|.*$/ );
+			if (
+				token_regex.test( data.token )
+				&& id_regex.test( data.wpcomid )
+			) {
+				// We have everything we need to ask for a login
+				var script = document.createElement( "script" );
+				script.setAttribute( "id", "wpcom_remote_login_validate" );
+				script.src = '/remote-login.php?wpcom_remote_login=validate'
+					+ '&wpcomid=' + data.wpcomid
+					+ '&token=' + encodeURIComponent( data.token )
+					+ '&host=' + window.location.protocol
+						+ '//' + window.location.hostname;
+				document.body.appendChild( script );
+			}
+
+			return;
+		}
+
+		// Safari ITP, not logged in, so redirect
+		if ( data.msg === 'LOGIN-REDIRECT' ) {
+			window.location = 'https://wordpress.com/log-in?redirect_to=' + window.location.href;
+			return;
+		}
+
+		// Safari ITP, storage access failed, remove the request
+		if ( data.msg === 'LOGIN-REMOVE' ) {
+			var css_zap = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } @media screen and ( max-width: 782px ) { html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } }';
+			var style_zap = document.createElement( 'style' );
+			style_zap.type = 'text/css';
+			style_zap.appendChild( document.createTextNode( css_zap ) );
+			document.body.appendChild( style_zap );
+
+			var e = document.getElementById( 'wpcom_request_access_iframe' );
+			e.parentNode.removeChild( e );
+
+			document.cookie = 'wordpress_com_login_access=denied; path=/; max-age=31536000';
+
+			return;
+		}
+
+		// Safari ITP
+		if ( data.msg === 'REQUEST_ACCESS' ) {
+			console.log( 'request access: safari' );
+
+			// Check ITP iframe enable/disable knob
+			if ( wpcom_remote_login_extra_auth !== 'safari_itp_iframe' ) {
+				return;
+			}
+
+			// If we are in a "private window" there is no ITP.
+			var private_window = false;
+			try {
+				var opendb = window.openDatabase( null, null, null, null );
+			} catch( e ) {
+				private_window = true;
+			}
+
+			if ( private_window ) {
+				console.log( 'private window' );
+				return;
+			}
+
+			var iframe = document.createElement( 'iframe' );
+			iframe.id = 'wpcom_request_access_iframe';
+			iframe.setAttribute( 'scrolling', 'no' );
+			iframe.setAttribute( 'sandbox', 'allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-top-navigation-by-user-activation' );
+			iframe.src = 'https://r-login.wordpress.com/remote-login.php?wpcom_remote_login=request_access&origin=' + encodeURIComponent( data.origin ) + '&wpcomid=' + encodeURIComponent( data.wpcomid );
+
+			var css = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 46px !important; } * html body { margin-top: 46px !important; } @media screen and ( max-width: 660px ) { html { margin-top: 71px !important; } * html body { margin-top: 71px !important; } #wpcom_request_access_iframe { display: block; height: 71px !important; } } #wpcom_request_access_iframe { border: 0px; height: 46px; position: fixed; top: 0; left: 0; width: 100%; min-width: 100%; z-index: 99999; background: #23282d; } ';
+
+			var style = document.createElement( 'style' );
+			style.type = 'text/css';
+			style.id = 'wpcom_request_access_styles';
+			style.appendChild( document.createTextNode( css ) );
+			document.body.appendChild( style );
+
+			document.body.appendChild( iframe );
+		}
+
+		if ( data.msg === 'DONE' ) {
+			wpcom_remote_login_final_cleanup();
+		}
+	}
+}, false );
+
+// Inject the remote login iframe after the page has had a chance to load
+// more critical resources
+window.addEventListener( "DOMContentLoaded", function( e ) {
+	var iframe = document.createElement( "iframe" );
+	iframe.style.display = "none";
+	iframe.setAttribute( "scrolling", "no" );
+	iframe.setAttribute( "id", "wpcom_remote_login_key" );
+	iframe.src = "https://r-login.wordpress.com/remote-login.php"
+		+ "?wpcom_remote_login=key"
+		+ "&origin=aHR0cHM6Ly9taWNoYWVsYW5uZWR5ZS5jb20%3D"
+		+ "&wpcomid=83619899"
+		+ "&time=1573657402";
+	document.body.appendChild( iframe );
+}, false );
+</script>
+<link rel="dns-prefetch" href="https://s2.wp.com/">
+<link rel="dns-prefetch" href="https://s1.wp.com/">
+<link rel="dns-prefetch" href="https://michaelannedye.wordpress.com/">
+<link rel="dns-prefetch" href="https://s0.wp.com/">
+<link rel="dns-prefetch" href="https://widgets.wp.com/">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="alternate" type="application/rss+xml" title="Michaelanne Dye » Feed" href="https://michaelannedye.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Michaelanne Dye » Comments Feed" href="https://michaelannedye.com/comments/feed/">
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+			<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/s2.wp.com\/wp-includes\/js\/wp-emoji-release.min.js?m=1573557586h&ver=5.3-RC5-46725"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Michaelanne Dye – Presidential Postdoc, School of Information, University of Michigan_files/wp-emoji-release.min.js" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="all-css-0-1" href="./Michaelanne Dye – Presidential Postdoc, School of Information, University of Michigan_files/saved_resource" type="text/css" media="all">
+<link rel="stylesheet" id="wpcom-block-editor-styles-css" href="./Michaelanne Dye – Presidential Postdoc, School of Information, University of Michigan_files/common.min.css" media="all">
+<link rel="stylesheet" id="all-css-2-1" href="./Michaelanne Dye – Presidential Postdoc, School of Information, University of Michigan_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="gateway-fonts-css" href="./Michaelanne Dye – Presidential Postdoc, School of Information, University of Michigan_files/css" media="all">
+<link rel="stylesheet" id="all-css-4-1" href="./Michaelanne Dye – Presidential Postdoc, School of Information, University of Michigan_files/saved_resource(1)" type="text/css" media="all">
+<link rel="stylesheet" id="print-css-5-1" href="./Michaelanne Dye – Presidential Postdoc, School of Information, University of Michigan_files/global-print.css" type="text/css" media="print">
+<link rel="stylesheet" id="all-css-6-1" href="./Michaelanne Dye – Presidential Postdoc, School of Information, University of Michigan_files/saved_resource(2)" type="text/css" media="all">
+<script type="text/javascript" src="./Michaelanne Dye – Presidential Postdoc, School of Information, University of Michigan_files/saved_resource(3)"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://michaelannedye.wordpress.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="https://michaelannedye.com/">
+<link rel="shortlink" href="https://wp.me/P5ERm3-1">
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/?format=json&amp;url=https%3A%2F%2Fmichaelannedye.com%2F&amp;for=wpcom-auto-discovery"><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/?format=xml&amp;url=https%3A%2F%2Fmichaelannedye.com%2F&amp;for=wpcom-auto-discovery">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Michaelanne Dye">
+<meta property="og:description" content="Presidential Postdoc, School of Information, University of Michigan">
+<meta property="og:url" content="https://michaelannedye.com/">
+<meta property="og:site_name" content="Michaelanne Dye">
+<meta property="og:image" content="https://michaelannedye.files.wordpress.com/2018/01/michaelanne.jpg">
+<meta property="og:image:width" content="150">
+<meta property="og:image:height" content="246">
+<meta property="og:image:alt" content="michaelanne">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:site" content="@wordpressdotcom">
+<meta name="twitter:text:title" content="Home">
+<meta name="twitter:card" content="summary">
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom">
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="shortcut icon" type="image/x-icon" href="https://secure.gravatar.com/blavatar/9f51154b9229d659f9ea10b7f89d5adf?s=32" sizes="16x16">
+<link rel="icon" type="image/x-icon" href="https://secure.gravatar.com/blavatar/9f51154b9229d659f9ea10b7f89d5adf?s=32" sizes="16x16">
+<link rel="apple-touch-icon-precomposed" href="https://secure.gravatar.com/blavatar/9f51154b9229d659f9ea10b7f89d5adf?s=114">
+<link rel="openid.server" href="https://michaelannedye.com/?openidserver=1">
+<link rel="openid.delegate" href="https://michaelannedye.com/">
+<link rel="search" type="application/opensearchdescription+xml" href="https://michaelannedye.com/osd.xml" title="Michaelanne Dye">
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com">
+		<style type="text/css">
+			.recentcomments a {
+				display: inline !important;
+				padding: 0 !important;
+				margin: 0 !important;
+			}
+
+			table.recentcommentsavatartop img.avatar, table.recentcommentsavatarend img.avatar {
+				border: 0px;
+				margin: 0;
+			}
+
+			table.recentcommentsavatartop a, table.recentcommentsavatarend a {
+				border: 0px !important;
+				background-color: transparent !important;
+			}
+
+			td.recentcommentsavatarend, td.recentcommentsavatartop {
+				padding: 0px 0px 1px 0px;
+				margin: 0px;
+			}
+
+			td.recentcommentstextend {
+				border: none !important;
+				padding: 0px 0px 2px 10px;
+			}
+
+			.rtl td.recentcommentstextend {
+				padding: 0px 10px 2px 0px;
+			}
+
+			td.recentcommentstexttop {
+				border: none;
+				padding: 0px 0px 0px 10px;
+			}
+
+			.rtl td.recentcommentstexttop {
+				padding: 0px 10px 0px 0px;
+			}
+		</style>
+		<meta name="application-name" content="Michaelanne Dye"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-tooltip" content="Presidential Postdoc, School of Information, University of Michigan"><meta name="msapplication-task" content="name=Subscribe;action-uri=https://michaelannedye.com/feed/;icon-uri=https://secure.gravatar.com/blavatar/9f51154b9229d659f9ea10b7f89d5adf?s=16"><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=https://s1.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=https://s1.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=https://s1.wp.com/i/favicon.ico"><meta name="description" content="I am a Presidential Postdoctoral Fellow at the University of Michigan&#39;s School of Information.  My work draws on the fields of Anthropology, CSCW (Computer Supported Cooperative Work), and ICTD (Information Communication Technologies &amp; Development) to study how people collaboratively access and participate with internet technologies in constrained contexts. Drawing on my training as a sociocultural…">
+	<style type="text/css">
+			.site-title a,
+		.site-description {
+			color: #ffffff;
+		}
+	
+			.header-bg {
+			background-image: url( https://michaelannedye.files.wordpress.com/2019/01/cropped-img_0761.jpg );
+			background-repeat: no-repeat;
+		}
+
+		@media screen and ( min-width: 50em ) {
+			.header-bg {
+				background-attachment: fixed;
+									background-size: 100%;
+					background-position: top center;
+											}
+		}
+	
+	</style>
+	<style type="text/css"></style><link rel="stylesheet" type="text/css" id="gravatar-card-css" href="./Michaelanne Dye – Presidential Postdoc, School of Information, University of Michigan_files/hovercard.min.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="./Michaelanne Dye – Presidential Postdoc, School of Information, University of Michigan_files/services.min.css"></head>
+
+<body class="home page-template-default page page-id-1 customizer-styles-applied highlander-enabled highlander-light">
+
+<div id="page" class="hfeed site" style="padding-top: 64px;">
+	<a class="skip-link screen-reader-text" href="https://michaelannedye.com/#content">Skip to content</a>
+
+	<div class="header-bg">
+		<div class="site-branding">
+
+			
+			<h1 class="site-title"><a href="https://michaelannedye.com/" rel="home" alt="Michaelanne Dye">Michaelanne Dye</a></h1>
+			<h2 class="site-description">Presidential Postdoc, School of Information, University of Michigan</h2>
+
+		</div><!-- .site-branding -->
+
+	</div><!-- .header-bg -->
+
+	<header id="masthead" class="site-header" role="banner">
+
+		<div class="stick sticking">
+
+			<nav id="site-navigation" class="main-navigation clear" role="navigation">
+				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">Menu</button>
+				<div class="menu-menu-1-container"><ul id="primary-menu" class="menu nav-menu" aria-expanded="false"><li id="menu-item-111" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-1 current_page_item menu-item-111"><a href="https://michaelannedye.com/" aria-current="page">Home</a></li>
+<li id="menu-item-145" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-145"><a href="https://michaelannedye.com/about-me/">About Me</a></li>
+<li id="menu-item-113" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-113"><a target="_blank" rel="noopener noreferrer" href="https://michaelannedye.files.wordpress.com/2019/01/michaelannedye_cv_2019.pdf">CV</a></li>
+<li id="menu-item-114" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-114"><a href="https://michaelannedye.com/selected-publications/">Publications</a></li>
+<li id="menu-item-116" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-116"><a href="https://michaelannedye.com/selected-press/">Selected Press</a></li>
+<li id="menu-item-112" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-112"><a href="https://michaelannedye.com/contact/">Contact</a></li>
+</ul></div>			</nav><!-- #site-navigation -->
+
+		</div><!-- .sticky -->
+
+	</header><!-- .row #masthead -->
+
+	<div id="content" class="site-content">
+
+<div id="primary" class="content-area">
+
+	<main id="main" class="site-main" role="main">
+
+		
+			
+<article id="post-1" class="post-1 page type-page status-publish hentry">
+
+	<header class="entry-header">
+		<h2 class="entry-title">Home</h2>	</header><!-- .entry-header -->
+
+	<div class="entry-content">
+
+	<div class="featured-image">
+			</div><!-- .featured-image -->
+
+		<p><img data-attachment-id="205" data-permalink="https://michaelannedye.com/michaelanne/" data-orig-file="https://michaelannedye.files.wordpress.com/2018/01/michaelanne.jpg" data-orig-size="293,480" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;2.2&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;iPhone 6s&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;1493487299&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;4.15&quot;,&quot;iso&quot;:&quot;32&quot;,&quot;shutter_speed&quot;:&quot;0.0083333333333333&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="michaelanne" data-image-description="" data-medium-file="https://michaelannedye.files.wordpress.com/2018/01/michaelanne.jpg?w=183" data-large-file="https://michaelannedye.files.wordpress.com/2018/01/michaelanne.jpg?w=293" class="  wp-image-205 alignleft" src="./Michaelanne Dye – Presidential Postdoc, School of Information, University of Michigan_files/michaelanne.jpg" alt="michaelanne" width="150" height="246" srcset="https://michaelannedye.files.wordpress.com/2018/01/michaelanne.jpg?w=150&amp;h=246 150w, https://michaelannedye.files.wordpress.com/2018/01/michaelanne.jpg?w=92&amp;h=150 92w, https://michaelannedye.files.wordpress.com/2018/01/michaelanne.jpg 293w" sizes="(max-width: 150px) 100vw, 150px">I am a Presidential Postdoctoral Fellow at the University of Michigan’s School of Information.&nbsp; My work draws on the fields of Anthropology, CSCW (Computer Supported Cooperative Work), and ICTD (Information Communication Technologies &amp; Development) to study how people collaboratively access and participate with internet technologies in constrained contexts.</p>
+<p>Drawing on my training as a sociocultural anthropologist, my work focuses on underserved groups to investigate (1) internet access in resource-constrained regions; (2) the design of citizen-led information systems; and (3) social media use for social change.</p>
+<p>Read more about me <a href="https://michaelannedye.wordpress.com/about-me/">here</a>.</p>
+<p><strong>RECENT NEWS</strong></p>
+<p>11.12.19 – I will be presenting my paper, <a href="https://michaelannedye.files.wordpress.com/2019/09/mdye_snet_2019.pdf" target="_blank" rel="noopener">“If it Rains, Ask Grandma to Disconnect the Nano: Maintenance &amp; Care in Havana’s StreetNet”</a> at CSCW 2019 in Austin, TX</p>
+<p>8.1.19 – I started my new position as a <a href="http://presidentspostdoc.umich.edu/fellows.php" target="_blank" rel="noopener">Presidential Postdoctoral Fellow/Assistant Professor </a>at the University of Michigan’s School of Information</p>
+<p>6.18.19 – I became a member of the 2019 cohort of the <a href="https://sociotech.net/about-csst/" target="_blank" rel="noopener">Consortium for the Science of Sociotechnical Systems (CSST)</a> Researchers</p>
+<p>6.8.19 – I successfully defended my dissertation, <a href="https://smartech.gatech.edu/bitstream/handle/1853/61759/DYE-DISSERTATION-2019.pdf" target="_blank" rel="noopener">Vamos a Resolver: Collaboratively Configuring the Internet in Havana</a></p>
+<p>3.4.19 – I have accepted a presidential postdoctoral fellowship position at the University of Michigan’s School of Information starting Fall 2019!</p>
+<p>1.15.19 – I wrote an <a href="https://michaelannedye.files.wordpress.com/2019/05/dye_acm_elpaquete_2019.pdf" target="_blank" rel="noopener">article for ACM Interactions Mag</a> on Cuba’s offline Internet.</p>
+<p>1.4.19 – I served as a co-chair, panelist, and organizer at <a href="https://www.ictdx.org/" target="_blank" rel="noopener">ICTDX in Ahmedabad, India</a>.</p>
+<p>11.4.18 – I co-organized a workshop, <a href="https://cscwsolidarity.wordpress.com/" target="_blank" rel="noopener">Solidarity Across Borders: Navigating Intersections Towards Equity &amp; Inclusion</a>, at the 2018 CSCW Conference.</p>
+<p>10.30.18 – I presented my work at Microsoft Research’s Ph.D. Summit.</p>
+<p>10.12.18 – I was named a <a href="https://gvu.gatech.edu/gvu-graduate-student-awards-program-2018" target="_blank" rel="noopener">2018-2019 Foley Scholar</a>.</p>
+<p>8.16.18 – I was awarded the $10,000 Global Impact Award from the ARCS Foundation!</p>
+<p>8.6.18 – I was named a Foley Scholar Award Finalist.</p>
+<p>View archived news items <a href="https://michaelannedye.wordpress.com/about-me/" target="_blank" rel="noopener noreferrer">here</a>.</p>
+			</div><!-- .entry-content -->
+
+	<footer class="entry-footer">
+			</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+			
+		
+	</main><!-- #main -->
+
+</div><!-- #primary -->
+
+
+<div id="secondary" class="widget-area" role="complementary">
+
+	<aside id="twitter_timeline-3" class="widget widget_twitter_timeline"><h1 class="widget-title">Twitter Stream</h1><a class="twitter-timeline" data-theme="light" data-link-color="#f96e5b" data-border-color="#e8e8e8" data-tweet-limit="5" data-lang="EN" data-partner="jetpack" href="https://twitter.com/michaelannedye">My Tweets</a></aside>
+</div><!-- #secondary -->
+
+	</div><!-- #content -->
+
+	<div class="footer-wrap clear">
+
+		<footer id="colophon" class="site-footer" role="contentinfo">
+
+			
+			<div class="site-info">
+				<a href="https://wordpress.com/?ref=footer_custom_svg" title="Create a website or blog at WordPress.com" rel="nofollow"><svg style="fill: currentColor; position: relative; top: 1px;" width="14px" height="15px" viewBox="0 0 14 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-labelledby="title" role="img">
+				<desc id="title">Create a website or blog at WordPress.com</desc>
+				<path d="M12.5225848,4.97949746 C13.0138466,5.87586309 13.2934037,6.90452431 13.2934037,7.99874074 C13.2934037,10.3205803 12.0351007,12.3476807 10.1640538,13.4385638 L12.0862862,7.88081544 C12.4453251,6.98296834 12.5648813,6.26504621 12.5648813,5.62667922 C12.5648813,5.39497674 12.549622,5.17994084 12.5225848,4.97949746 L12.5225848,4.97949746 Z M7.86730089,5.04801561 C8.24619178,5.02808979 8.58760099,4.98823815 8.58760099,4.98823815 C8.9267139,4.94809022 8.88671369,4.44972248 8.54745263,4.46957423 C8.54745263,4.46957423 7.52803983,4.54957381 6.86996227,4.54957381 C6.25158863,4.54957381 5.21247202,4.46957423 5.21247202,4.46957423 C4.87306282,4.44972248 4.83328483,4.96816418 5.17254589,4.98823815 C5.17254589,4.98823815 5.49358462,5.02808979 5.83269753,5.04801561 L6.81314716,7.73459399 L5.43565839,11.8651647 L3.14394256,5.04801561 C3.52312975,5.02808979 3.86416859,4.98823815 3.86416859,4.98823815 C4.20305928,4.94809022 4.16305906,4.44972248 3.82394616,4.46957423 C3.82394616,4.46957423 2.80475558,4.54957381 2.14660395,4.54957381 C2.02852925,4.54957381 1.88934333,4.54668493 1.74156477,4.54194422 C2.86690406,2.83350881 4.80113651,1.70529256 6.99996296,1.70529256 C8.638342,1.70529256 10.1302017,2.33173369 11.2498373,3.35765419 C11.222726,3.35602457 11.1962815,3.35261718 11.1683554,3.35261718 C10.5501299,3.35261718 10.1114609,3.89113285 10.1114609,4.46957423 C10.1114609,4.98823815 10.4107217,5.42705065 10.7296864,5.94564049 C10.969021,6.36482346 11.248578,6.90326506 11.248578,7.68133501 C11.248578,8.21992476 11.0413918,8.84503256 10.7696866,9.71584277 L10.1417574,11.8132391 L7.86730089,5.04801561 Z M6.99996296,14.2927074 C6.38218192,14.2927074 5.78595654,14.2021153 5.22195356,14.0362644 L7.11048207,8.54925635 L9.04486267,13.8491542 C9.05760348,13.8802652 9.07323319,13.9089317 9.08989995,13.9358945 C8.43574834,14.1661896 7.73285573,14.2927074 6.99996296,14.2927074 L6.99996296,14.2927074 Z M0.706448182,7.99874074 C0.706448182,7.08630113 0.902152921,6.22015756 1.25141403,5.43749503 L4.25357806,13.6627848 C2.15393732,12.6427902 0.706448182,10.4898387 0.706448182,7.99874074 L0.706448182,7.99874074 Z M6.99996296,0.999 C3.14016476,0.999 0,4.13905746 0,7.99874074 C0,11.8585722 3.14016476,14.999 6.99996296,14.999 C10.8596871,14.999 14,11.8585722 14,7.99874074 C14,4.13905746 10.8596871,0.999 6.99996296,0.999 L6.99996296,0.999 Z" id="wordpress-logo-simplified-cmyk" stroke="none" fill="“currentColor”" fill-rule="evenodd"></path>
+			</svg></a>
+				
+							</div><!-- .site-info -->
+
+		</footer><!-- #colophon -->
+
+	</div><!-- .footer-wrap -->
+
+</div><!-- #page -->
+
+<!--  -->
+<script src="./Michaelanne Dye – Presidential Postdoc, School of Information, University of Michigan_files/gprofiles.js"></script>
+<script>
+var WPGroHo = {"my_hash":""};
+</script>
+<script type="text/javascript" src="./Michaelanne Dye – Presidential Postdoc, School of Information, University of Michigan_files/wpgroho.js"></script>
+
+	<script>
+		//initialize and attach hovercards to all gravatars
+		jQuery( document ).ready( function( $ ) {
+
+			if (typeof Gravatar === "undefined"){
+				return;
+			}
+
+			if ( typeof Gravatar.init !== "function" ) {
+				return;
+			}			
+
+			Gravatar.profile_cb = function( hash, id ) {
+				WPGroHo.syncProfileData( hash, id );
+			};
+			Gravatar.my_hash = WPGroHo.my_hash;
+			Gravatar.init( 'body', '#wp-admin-bar-my-account' );
+		});
+	</script>
+
+		<div style="display:none">
+	</div>
+
+	<div id="carousel-reblog-box">
+		<form action="https://michaelannedye.com/#" name="carousel-reblog">
+			<textarea id="carousel-reblog-content" name="carousel-reblog-content" placeholder="Add your thoughts here... (optional)"></textarea>
+			<label for="carousel-reblog-to-blog-id" id="carousel-reblog-lblogid">Post to</label>
+			<select name="carousel-reblog-to-blog-id" id="carousel-reblog-to-blog-id">
+						</select>
+
+			<div class="submit">
+				<span class="canceltext"><a href="https://michaelannedye.com/#" class="cancel">Cancel</a></span>
+				<input type="submit" name="carousel-reblog-submit" class="button" id="carousel-reblog-submit" value="Reblog Post">
+				<input type="hidden" id="carousel-reblog-blog-id" value="83619899">
+				<input type="hidden" id="carousel-reblog-blog-url" value="https://michaelannedye.com">
+				<input type="hidden" id="carousel-reblog-blog-title" value="Michaelanne Dye">
+				<input type="hidden" id="carousel-reblog-post-url" value="">
+				<input type="hidden" id="carousel-reblog-post-title" value="">
+			</div>
+
+			<input type="hidden" id="_wpnonce" name="_wpnonce" value="3c2e03558f"><input type="hidden" name="_wp_http_referer" value="/">		</form>
+
+		<div class="arrow"></div>
+	</div>
+<link rel="stylesheet" id="all-css-0-2" href="./Michaelanne Dye – Presidential Postdoc, School of Information, University of Michigan_files/saved_resource(4)" type="text/css" media="all">
+<script>
+var gatewayadminbar = [""];
+</script>
+<script>
+var actionbardata = {"siteID":"83619899","siteName":"Michaelanne Dye","siteURL":"https:\/\/michaelannedye.com","icon":"<img alt='' src='https:\/\/secure.gravatar.com\/blavatar\/9f51154b9229d659f9ea10b7f89d5adf?s=50&d=https%3A%2F%2Fs2.wp.com%2Fi%2Flogo%2Fwpcom-gray-white.png' class='avatar avatar-50' height='50' width='50' \/>","canManageOptions":"","canCustomizeSite":"","isFollowing":"","themeSlug":"pub\/gateway","signupURL":"https:\/\/wordpress.com\/start\/","loginURL":"https:\/\/wordpress.com\/log-in?redirect_to=https%3A%2F%2Fmichaelannedye.com%2F&signup_flow=account&domain=michaelannedye.com","themeURL":"https:\/\/wordpress.com\/theme\/gateway\/","xhrURL":"https:\/\/michaelannedye.com\/wp-admin\/admin-ajax.php","nonce":"9e00702f2a","isSingular":"1","isFolded":"","isLoggedIn":"","isMobile":"","subscribeNonce":"<input type=\"hidden\" id=\"_wpnonce\" name=\"_wpnonce\" value=\"986725bb90\" \/>","referer":"https:\/\/michaelannedye.com\/","canFollow":"1","feedID":"82459305","statusMessage":"","customizeLink":"https:\/\/michaelannedye.wordpress.com\/wp-admin\/customize.php?url=https%3A%2F%2Fmichaelannedye.wordpress.com%2F","postID":"1","shortlink":"https:\/\/wp.me\/P5ERm3-1","canEditPost":"","editLink":"https:\/\/wordpress.com\/page\/michaelannedye.com\/1","statsLink":"https:\/\/wordpress.com\/stats\/post\/1\/michaelannedye.com","i18n":{"view":"View site","follow":"Follow","following":"Following","edit":"Edit","login":"Log in","signup":"Sign up","customize":"Customize","report":"Report this content","themeInfo":"Get theme: Gateway","shortlink":"Copy shortlink","copied":"Copied","followedText":"New posts from this site will now appear in your <a href=\"https:\/\/wordpress.com\/\">Reader<\/a>","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","editSubs":"Manage subscriptions","viewReader":"View site in Reader","viewReadPost":"View post in Reader","subscribe":"Sign me up","enterEmail":"Enter your email address","followers":"","alreadyUser":"Already have a WordPress.com account? <a href=\"https:\/\/wordpress.com\/log-in?redirect_to=https%3A%2F%2Fmichaelannedye.com%2F&signup_flow=account&domain=michaelannedye.com\">Log in now.<\/a>","stats":"Stats"}};
+</script>
+<script>
+var jetpackCarouselStrings = {"widths":[370,700,1000,1200,1400,2000],"is_logged_in":"","lang":"en","ajaxurl":"https:\/\/michaelannedye.com\/wp-admin\/admin-ajax.php","nonce":"4d2cbb59ff","display_exif":"1","display_geo":"1","single_image_gallery":"1","single_image_gallery_media_file":"","background_color":"black","comment":"Comment","post_comment":"Post Comment","write_comment":"Write a Comment...","loading_comments":"Loading Comments...","download_original":"View full size <span class=\"photo-size\">{0}<span class=\"photo-size-times\">\u00d7<\/span>{1}<\/span>","no_comment_text":"Please be sure to submit some text with your comment.","no_comment_email":"Please provide an email address to comment.","no_comment_author":"Please provide your name to comment.","comment_post_error":"Sorry, but there was an error posting your comment. Please try again later.","comment_approved":"Your comment was approved.","comment_unapproved":"Your comment is in moderation.","camera":"Camera","aperture":"Aperture","shutter_speed":"Shutter Speed","focal_length":"Focal Length","copyright":"Copyright","comment_registration":"0","require_name_email":"1","login_url":"https:\/\/michaelannedye.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Fmichaelannedye.com%2F","blog_id":"83619899","meta_data":["camera","aperture","shutter_speed","focal_length","copyright"],"local_comments_commenting_as":"<fieldset><label for=\"email\">Email (Required)<\/label> <input type=\"text\" name=\"email\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-email-field\" \/><\/fieldset><fieldset><label for=\"author\">Name (Required)<\/label> <input type=\"text\" name=\"author\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-author-field\" \/><\/fieldset><fieldset><label for=\"url\">Website<\/label> <input type=\"text\" name=\"url\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-url-field\" \/><\/fieldset>","reblog":"Reblog","reblogged":"Reblogged","reblog_add_thoughts":"Add your thoughts here... (optional)","reblogging":"Reblogging...","post_reblog":"Post Reblog","stats_query_args":"blog=83619899&v=wpcom&tz=-5&user_id=0&subd=michaelannedye","is_public":"1","reblog_enabled":""};
+</script>
+<script type="text/javascript" src="./Michaelanne Dye – Presidential Postdoc, School of Information, University of Michigan_files/saved_resource(5)"></script><div id="actionbar" class="actnbr-pub-gateway actnbr-has-follow actnbr-hidden"><ul><li class="actnbr-btn actnbr-hidden"> 			    	<a class="actnbr-action actnbr-actn-follow" href="https://michaelannedye.com/"><svg class="gridicon gridicon__follow" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z"></path></g></svg><span>Follow</span></a> 			    	<div class="actnbr-popover tip tip-top-left actnbr-notice"> 			    		<div class="tip-arrow"></div> 			    		<div class="tip-inner actnbr-follow-bubble"></div> 			    	</div> 			    </li><li class="actnbr-ellipsis actnbr-hidden"> 			  <svg class="gridicon gridicon__ellipsis" height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><circle cx="5" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle></g></svg> 			  <div class="actnbr-popover tip tip-top-left actnbr-more"> 			  	<div class="tip-arrow"></div> 			  	<div class="tip-inner"> 				  <ul> 				    <li class="actnbr-sitename actnbr-hidden"><a href="https://michaelannedye.com/"><img alt="" src="./Michaelanne Dye – Presidential Postdoc, School of Information, University of Michigan_files/9f51154b9229d659f9ea10b7f89d5adf.png" class="avatar avatar-50" height="50" width="50" originals="50" scale="2"> Michaelanne Dye</a></li> 				   	<li class="actnbr-folded-customize actnbr-hidden"><a href="https://michaelannedye.wordpress.com/wp-admin/customize.php?url=https%3A%2F%2Fmichaelannedye.wordpress.com%2F"><svg class="gridicon gridicon__customize" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M2 6c0-1.505.78-3.08 2-4 0 .845.69 2 2 2 1.657 0 3 1.343 3 3 0 .386-.08.752-.212 1.09.74.594 1.476 1.19 2.19 1.81L8.9 11.98c-.62-.716-1.214-1.454-1.807-2.192C6.753 9.92 6.387 10 6 10c-2.21 0-4-1.79-4-4zm12.152 6.848l1.34-1.34c.607.304 1.283.492 2.008.492 2.485 0 4.5-2.015 4.5-4.5 0-.725-.188-1.4-.493-2.007L18 9l-2-2 3.507-3.507C18.9 3.188 18.225 3 17.5 3 15.015 3 13 5.015 13 7.5c0 .725.188 1.4.493 2.007L3 20l2 2 6.848-6.848c1.885 1.928 3.874 3.753 5.977 5.45l1.425 1.148 1.5-1.5-1.15-1.425c-1.695-2.103-3.52-4.092-5.448-5.977z" data-reactid=".2.1.1:0.1b.0"></path></g></svg><span>Customize<span></span></span></a></li> 				    <li class="actnbr-folded-follow actnbr-hidden"><a class="actnbr-action actnbr-actn-follow" href="https://michaelannedye.com/"><svg class="gridicon gridicon__follow" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z"></path></g></svg><span>Follow</span></a></li> 					<li class="actnbr-signup actnbr-hidden"><a href="https://wordpress.com/start/">Sign up</a></li> 				    <li class="actnbr-login actnbr-hidden"><a href="https://wordpress.com/log-in?redirect_to=https%3A%2F%2Fmichaelannedye.com%2F&amp;signup_flow=account&amp;domain=michaelannedye.com">Log in</a></li> 				     				    <li class="actnbr-shortlink actnbr-hidden"><a href="https://wp.me/P5ERm3-1">Copy shortlink</a></li> 				    <li class="flb-report actnbr-hidden"><a href="http://en.wordpress.com/abuse/">Report this content</a></li> 				     				     				    <li class="actnbr-subs actnbr-hidden"><a href="https://subscribe.wordpress.com/">Manage subscriptions</a></li> 				    <li class="actnbr-fold actnbr-hidden"><a href="https://michaelannedye.com/">Collapse this bar</a></li> 			      </ul> 			    </div> 		      </div> 		    </li> 	      </ul></div>
+<script type="text/javascript">
+// <![CDATA[
+(function() {
+try{
+  if ( window.external &&'msIsSiteMode' in window.external) {
+    if (window.external.msIsSiteMode()) {
+      var jl = document.createElement('script');
+      jl.type='text/javascript';
+      jl.async=true;
+      jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jl, s);
+    }
+  }
+}catch(e){}
+})();
+// ]]>
+</script><script src="./Michaelanne Dye – Presidential Postdoc, School of Information, University of Michigan_files/w.js" type="text/javascript" async="" defer=""></script>
+<script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['storeContext', {'blog_id':'83619899','blog_tz':'-5','user_lang':'en','blog_lang':'en','user_id':'0'}]);
+_stq.push(['view', {'blog':'83619899','v':'wpcom','tz':'-5','user_id':'0','post':'1','subd':'michaelannedye'}]);
+_stq.push(['extra', {'crypt':'UE40eW5QN0p8M2Y/RE1TaVhzUzFMbjdWNHpwZGhTayxPSUFCMGNrd29+Smw0TDhnZmRTK0hlRi9QSGh6bi9GXVhBJWIlZlR5U1JMLU8/MkNtblkvY1dSWVIsZXU0S1VzfFVyTGh2PTk1LFJjc18leWhoSDlJUHJqYmpobTNzX1tvOGk4d3Y3Yj1YRmVSR0RhY2lFZCwwMmp3b2ElTTlJckFGLywwRmpGRm5FRXhGU3ZFQ0YwRVtuS3VfbyxuLF82VmdpaD0yUT0tT1JtSko9LHpXLTY4JS5LT21PZm9VJVE3OTU0VXM5MWRBb1d8aWMrTXg9ZFlsV2tTeHAxYVBnbmhjSmNZSV9HaDdfNXxJLD8zQz9rREpiTFVNOEg='}]);
+_stq.push([ 'clickTrackerInit', '83619899', '1' ]);
+	</script>
+<noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:0px;width:0px;overflow:hidden" alt="" /></noscript>
+<script>
+if ( 'object' === typeof wpcom_mobile_user_agent_info ) {
+
+	wpcom_mobile_user_agent_info.init();
+	var mobileStatsQueryString = "";
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedPlatformName )
+		mobileStatsQueryString += "&x_" + 'mobile_platforms' + '=' + wpcom_mobile_user_agent_info.matchedPlatformName;
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedUserAgentName )
+		mobileStatsQueryString += "&x_" + 'mobile_devices' + '=' + wpcom_mobile_user_agent_info.matchedUserAgentName;
+	
+	if( wpcom_mobile_user_agent_info.isIPad() )
+		mobileStatsQueryString += "&x_" + 'ipad_views' + '=' + 'views';
+
+	if( "" != mobileStatsQueryString ) {
+		new Image().src = document.location.protocol + '//pixel.wp.com/g.gif?v=wpcom-no-pv' + mobileStatsQueryString + '&baba=' + Math.random();
+	}
+	
+}
+</script>
+
+
+<!--
+	generated 176 seconds ago
+	generated in 0.069 seconds
+	served from batcache in 0.001 seconds
+	expires in 124 seconds
+-->
+<iframe scrolling="no" id="wpcom_remote_login_key" src="./Michaelanne Dye – Presidential Postdoc, School of Information, University of Michigan_files/remote-login.html" style="display: none;"></iframe><img src="./Michaelanne Dye – Presidential Postdoc, School of Information, University of Michigan_files/g.gif" alt=":)" id="wpstats" scale="0"><walnut-highlight-tool></walnut-highlight-tool></body></html>
