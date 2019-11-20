@@ -5,3 +5,18 @@ html {
 h1 {
     font-family: 'Montserrat', sans-serif;
 }
+
+.skip a{
+	background: white;
+	left: 0;
+	padding: 6px;
+	position: absolute;
+	top: -40px;
+	-webkit-transition: top 1s ease-out;
+	transition: top 1s ease-out;
+	z-index: 1;
+  }
+  
+  .skip :focus{
+	top: 0;
+  }
