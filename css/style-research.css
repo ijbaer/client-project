@@ -1,21 +1,13 @@
 /* Research */
-html{
-    scroll-behavior: smooth;
-}
-
 body{
     background-image: url(../images/background5.jpg);
     font-family: "open sans";
     font-size: 18px;
     margin: 0;
     padding: 0;
-}
-
-h1{
-    font-size: 8vw;
-    line-height: 1;
-    padding: 50px 0;
-    text-align: center;
+    color: #888;
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
 nav{
@@ -46,25 +38,6 @@ nav .current{
     text-shadow: 2px 2px 2px grey;
 }
 
-#skip a {
-    display: block;
-    position: absolute;
-    left: -999px;
-    top: -999px;
-}
-
-#skip a:focus {
-    left: 0;
-    top: 0;
-    padding: 3px;
-    background: #ffc;
-    border:1px solid #990000;
-}
-
-:focus{
-    border: 2px solid black;
-}
-
 .container-research{
     display: grid;
     grid-template-columns: 100%;
@@ -76,9 +49,22 @@ nav .current{
     text-align: center;
 }
 
+.publications{
+    padding: 20px;
+}
+
+a{
+    color: #e8554e;
+    text-decoration: none;
+}
+
 /* Selected Press */
 #selectedpress-header{
     text-align: center;
+}
+
+.selectedpress{
+    padding: 20px;
 }
 
 /* #research-header{
