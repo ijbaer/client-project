@@ -6,6 +6,7 @@
   grid-row-gap: 20px;
 }
 
+
 .home-image {
 
   grid-column: 1 / 2;
@@ -19,6 +20,7 @@
 .aboutme {
   grid-column: 2 / -1;
   grid-row: 1 / 2;
+  font-size: 15px;
 }
 
 .under-pic {
@@ -36,13 +38,50 @@
   text-align: center;
 }
 
-.more {
+.more-aboutme {
   display: none;
 }
 
 @media screen and (min-width: 1000px){
 
+  .container-home {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-row-gap: 20px;
+  }
   .home-image {
     width: 225px;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+
+  .aboutme {
+    font-size: 18px;
+    margin: 50px;
+    text-align: center;
+
+  }
+
+  .intro {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
+
+  .under-pic {
+
+    margin: 50px;
+
+  }
+
+  .recentNews {
+    grid-column: 2 / 3;
+    grid-row: 1 / -1;
+    margin: 55px;
+
+  }
+  body {
+    font-size: 18px;
   }
 }
