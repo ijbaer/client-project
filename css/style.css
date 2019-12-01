@@ -2,7 +2,7 @@ html{
     font-family: 'Open Sans', sans-serif;
 }
 
-h1{
+h1, h3 {
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -19,4 +19,18 @@ h1{
   
 .skip :focus{
 	top: 0;
-}
+  }
+
+footer{ margin-top: 20px;font-size:10pt;background-color:rgb(211, 211, 211); padding-top:20px}
+
+footer h4{ color: rgb(100, 100, 100);display:block; text-align: center; line-height: 15pt;}
+
+footer .social-icons { text-align:center; }
+
+footer .social-icons  > li{ padding:20px; font-size: 25pt; display: inline-block; }
+
+footer .social-icons  > li > a{ color:rgb(252, 26, 113); text-align:center}
+
+footer .social-icons > li:hover a{color:#fff}
+
+
