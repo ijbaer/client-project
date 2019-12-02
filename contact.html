@@ -15,6 +15,14 @@
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
+	<title>Contact.css</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+<link rel="stylesheet" href="css/stylecontact.css">
+<style>
+.images {display:none;}
+</style>
+</head>
 
 	</head>
 
@@ -33,6 +41,33 @@
 			</nav>
 		</header>
 
+<h2 class="w3-center">Automatic Slideshow</h2>
+
+<div class="w3-content w3-section" style="max-width:500px">
+  <img class="images" src="images/travel1.jpeg" style="width:100%">
+  <img class="images" src="images/travel2.jpeg" style="width:100%">
+  <img class="images" src="images/travel3.jpeg" style="width:100%">
+  <img class="images" src="images/travel4.jpeg" style="width:100%">
+  <img class="images" src="images/travel5.jpeg" style="width:100%">
+</div>
+
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("images");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+</script>
+
 		<main id="main">
             <p class="contact-p">Mailing address:<br>
                 School of Information at the University of Michigan<br>
@@ -41,8 +76,7 @@
                 Email: mmtd (at) umich (dot) edu<br>
             
             </p>
-         <p class="contact-p"><a class="twitter-timeline" href="https://twitter.com/michaelannedye?ref_src=twsrc%5Etfw">Tweets by michaelannedye</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-		</p>
+         
 		</main>
 
 		<footer>

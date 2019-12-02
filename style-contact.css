@@ -1,0 +1,65 @@
+html{
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+	font-family: 'Lato', 'Open Sans', sans-serif;
+	letter-spacing: 1px;
+  }
+
+  .container-home {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto auto auto;
+	grid-row-gap: 20px;
+  
+  }
+
+  h1 {
+	padding: 60px;
+	text-align: center;
+	background: white;
+	color: rgb(245, 146, 59);
+	font-size: 40px;
+  }
+
+h1, h3 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+p {
+	padding: 60px;
+	text-align: center;
+	background: white;
+	color: rgb(245, 146, 59);
+	font-size: 30px;
+  }
+
+.skip a{
+	background: white;
+	left: 0;
+	padding: 6px;
+	position: absolute;
+	top: -40px;
+	-webkit-transition: top 1s ease-out;
+	transition: top 1s ease-out;
+	z-index: 1;
+}
+  
+.skip :focus{
+	top: 0;
+  }
+
+footer{ margin-top: 20px;font-size:10pt;background-color:rgb(211, 211, 211); padding-top:20px}
+
+footer h4{ color: rgb(100, 100, 100);display:block; text-align: center; line-height: 15pt;}
+
+footer .social-icons { text-align:center; }
+
+footer .social-icons  > li{ padding:20px; font-size: 25pt; display: inline-block; }
+
+footer .social-icons  > li > a{ color:rgb(252, 26, 113); text-align:center}
+
+footer .social-icons > li:hover a{color:#fff}
+
+
