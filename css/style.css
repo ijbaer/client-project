@@ -5,9 +5,18 @@ html{
 
 h1 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
+    font-size: 22px;
+    font-weight: bold;
 }
-
+h3 {
+  font-weight: 500;
+}
+p{
+  margin:10px;
+}
+.contact-p{
+  margin: 5vw;
+}
 .skip a{
 	background: white;
 	left: 0;
@@ -50,6 +59,7 @@ h1 {
 
   nav{
     padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 nav ul{
@@ -69,6 +79,18 @@ nav a{
 
 nav a:hover{
     text-decoration: underline;
+    color: rgb(252, 26, 113);
+}
+
+/* header */
+header {margin: 5vw; border-bottom: 2px solid lightgrey;}
+
+@media screen and (min-width: 960px){
+  header {margin: 2vw;}
+  header nav ul{ text-align: right; }
+  .contact-p{
+    margin: 2vw;
+  }
 }
 
 /* footer */
