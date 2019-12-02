@@ -1,4 +1,4 @@
-html {
+html{
     font-family: 'Open Sans', sans-serif;
     scroll-behavior: smooth;
 }
@@ -17,9 +17,9 @@ h1 {
 	-webkit-transition: top 1s ease-out;
 	transition: top 1s ease-out;
 	z-index: 1;
-  }
+}
   
-  .skip :focus{
+.skip :focus{
 	top: 0;
   }
 

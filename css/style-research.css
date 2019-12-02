@@ -1,21 +1,12 @@
 /* Research */
-html{
-    scroll-behavior: smooth;
-}
-
 body{
     background-image: url(../images/background5.jpg);
-    font-family: "open sans";
     font-size: 18px;
     margin: 0;
     padding: 0;
-}
-
-h1{
-    font-size: 8vw;
-    line-height: 1;
-    padding: 50px 0;
-    text-align: center;
+    color: black;
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
 nav{
@@ -46,39 +37,227 @@ nav .current{
     text-shadow: 2px 2px 2px grey;
 }
 
-#skip a {
-    display: block;
-    position: absolute;
-    left: -999px;
-    top: -999px;
-}
-
-#skip a:focus {
-    left: 0;
-    top: 0;
-    padding: 3px;
-    background: #ffc;
-    border:1px solid #990000;
-}
-
-:focus{
-    border: 2px solid black;
-}
-
 .container-research{
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: auto auto;
     justify-content: space-around;
 }
+
+p#dates{
+    text-align: center;
+    font-size: 20px;
+    background: rgba(137, 201, 212, 0.692);
+}
+
 /* Publications */
 #publications-header{
     text-align: center;
+    font-size: 25px;
+    padding: 20px;
+}
+
+.publications{
+    /* padding: 20px; */
+}
+
+a{
+    color: navy;
+    text-decoration: none;
+    font-size: 19px;
+}
+
+a:hover{
+    color: royalblue;
+}
+
+#pub19{
+    background: lightgray;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+#pub18{
+    background: whitesmoke;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+#pub17{
+    background: lightgray;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+#pub16{
+    background: whitesmoke;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+#pub15{
+    background: lightgray;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+#pub14{
+    background: whitesmoke;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+#pub13{
+    background: lightgray;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+#pub11{
+    background: whitesmoke;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
 }
 
 /* Selected Press */
 #selectedpress-header{
     text-align: center;
+    font-size: 25px;
+    padding: 20px;
+}
+
+.selectedpress{
+    /* padding: 20px; */
+}
+
+#press18{
+    background: lightgray;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+#press16{
+    background: whitesmoke;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+#press13{
+    background: lightgray;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+#press12{
+    background: whitesmoke;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+@media screen and (min-width: 1000px){
+    .container-research{
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+        justify-content: space-around;
+    }
+    /* Publications */
+    #pub19{
+        background: lightgray;
+        padding-top: 20px;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+    
+    #pub18{
+        background: lightgray;
+        padding-top: 20px;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+    
+    #pub17{
+        background: lightgray;
+        padding-top: 20px;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+    
+    #pub16{
+        background: lightgray;
+        padding-top: 20px;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+    
+    #pub15{
+        background: lightgray;
+        padding-top: 20px;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+    
+    #pub14{
+        background: lightgray;
+        padding-top: 20px;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+    
+    #pub13{
+        background: lightgray;
+        padding-top: 20px;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+    
+    #pub11{
+        background: lightgray;
+        padding-top: 20px;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+    /* Selected Press  */
+    #press18{
+        background: whitesmoke;
+        padding-top: 20px;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+    
+    #press16{
+        background: whitesmoke;
+        padding-top: 20px;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+    
+    #press13{
+        background: whitesmoke;
+        padding-top: 20px;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+    
+    #press12{
+        background: whitesmoke;
+        padding-top: 20px;
+        padding-right: 20px;
+        padding-left: 20px;
+    } 
+
 }
 
 /* #research-header{
