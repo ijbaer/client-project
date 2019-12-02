@@ -120,13 +120,14 @@ footer .social-icons > li:hover a{color:#fff}
 }
 
 .home-image {
-
+  margin-left: 15px;
+  margin-top: 15px;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   width: 175px;
   align-items: center;
   justify-self: center;
-  border: 2px solid black;
+  border: 2px solid gray;
 
 }
 
