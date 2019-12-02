@@ -16,15 +16,6 @@
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
-	<title>Contact.css</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
-<link rel="stylesheet" href="css/stylecontact.css">
-<style>
-.images {display:none;}
-</style>
-</head>
-
 	</head>
 
 	<body>
@@ -39,6 +30,7 @@
 						<li><a href="research.html" title="Research">Research</a></li>
 						<li><a href="pdf/cv.pdf" title="CV">CV</a></li>
 						<li class="nav-active"><a href="contact.html" title="Contact">Contact</a></li>
+						</ul>
 			</nav>
 		</header>
 		<main id="main">
@@ -50,44 +42,98 @@
 				<b>LinkedIn: </b><br><a href="https://www.linkedin.com/in/michaelannedye/">https://www.linkedin.com/in/michaelannedye/</a>
             </p>
 
-<h2 class="w3-center">Explore Your Horizons</h2>
+			<div class="img-carousel">
+			<h2>Explore Your Horizons</h2><br>
 
-<div class="w3-content w3-section" style="max-width:500px">
-  <img class="images" src="images/travel1.jpeg" width="500px" height="500px">
-  <img class="images" src="images/travel2.jpeg" width="500px" height="500px">
-  <img class="images" src="images/travel3.jpeg" width="500px" height="500px">
-  <img class="images" src="images/travel4.jpeg" width="500px" height="500px">
-  <img class="images" src="images/travel5.jpeg" width="500px" height="500px">
-</div>
+			<div class="slideshow-container">
+				<div class="mySlides fade">
+					<img class="images" src="images/travel1.jpeg" width="500" height="500" alt="travel photo"/>
+				  </div>
+				<div class="mySlides fade">
+					<img class="images" src="images/travel2.jpeg" width="500" height="500" alt="travel photo"/>
+				  </div>
+				<div class="mySlides fade">
+					<img class="images" src="images/travel3.jpeg" width="500" height="500" alt="travel photo"/>
+				  </div>
+				<div class="mySlides fade">
+					<img class="images" src="images/travel4.jpeg" width="500" height="500" alt="travel photo"/>
+				  </div>
+				  <div class="mySlides fade">
+					<img class="images" src="images/travel5.jpeg" width="500" height="500" alt="travel photo"/>
+				  </div>
+				</div>
+				
+				<br/>
+				<div style='text-align: center;'>
+					<span class="dot" onclick='currentSlide(1)'></span>
+					<span class="dot" onclick='currentSlide(2)'></span>
+					<span class="dot" onclick='currentSlide(3)'></span>
+					<span class="dot" onclick='currentSlide(4)'></span>
+					<span class="dot" onclick='currentSlide(5)'></span>
+				  </div>
+
+			</div>
+			
 		</main>
-
-<script>
-var myIndex = 0;
-carousel();
-
-function carousel() {
-  var i;
-  var x = document.getElementsByClassName("images");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  myIndex++;
-  if (myIndex > x.length) {myIndex = 1}    
-  x[myIndex-1].style.display = "block";  
-  setTimeout(carousel, 2000); // Change image every 2 seconds
-}
-</script>
 
 		<footer>
 			<h4>Michaelanne Dye</h4>
 			<h4>mmtd@umich.edu</h4>
 			<ul class="social-icons">
-					<li><a href="https://www.linkedin.com/in/michaelannedye/" aria-label="linkedin"><i class="fab fa-linkedin"></i></a></li>
-					<li><a href="https://twitter.com/michaelannedye" aria-label="twitter"><i class="fab fa-twitter" ></i></a></li>
-				</ul>
-
-
+				<li><a href="https://www.linkedin.com/in/michaelannedye/" aria-label="linkedin"><i class="fab fa-linkedin"></i></a></li>
+				<li><a href="https://twitter.com/michaelannedye" aria-label="twitter"><i class="fab fa-twitter" ></i></a></li>
+			</ul>
 		</footer>
+
+		<script>
+			
+			var slideIndex = 1;
+			var myTimer;
+			var slideshowContainer;
+
+			function plusSlides(n){
+				clearInterval(myTimer);
+				if (n < 0){
+					showSlides(slideIndex -= 1);
+				} else {
+				showSlides(slideIndex += 1); 
+				}
+				if (n === -1){
+					myTimer = setInterval(function(){plusSlides(n + 2)}, 4000);
+				} else {
+					myTimer = setInterval(function(){plusSlides(n + 1)}, 4000);
+				}
+			}
+
+			function showSlides(n){
+				var i;
+				var slides = document.getElementsByClassName("mySlides");
+				var dots = document.getElementsByClassName("dot");
+				if (n > slides.length) {slideIndex = 1}
+				if (n < 1) {slideIndex = slides.length}
+				for (i = 0; i < slides.length; i++) {
+					slides[i].style.display = "none";
+				}
+				for (i = 0; i < dots.length; i++) {
+					dots[i].className = dots[i].className.replace(" active", "");
+				}
+				slides[slideIndex-1].style.display = "block";
+				dots[slideIndex-1].className += " active";
+			}
+
+			window.addEventListener("load",function() {
+				showSlides(slideIndex);
+				myTimer = setInterval(function(){plusSlides(1)}, 4000);
+			})
+
+			function currentSlide(n){
+				clearInterval(myTimer);
+				myTimer = setInterval(function(){plusSlides(n + 1)}, 4000);
+				showSlides(slideIndex = n);
+			}
+
+			
+			</script>
 	</body>
 
 </html>
