@@ -22,9 +22,7 @@ h3 {
 p{
   margin:10px;
 }
-.contact-p{
-  margin: 5vw;
-}
+
 .skip a{
 	background: white;
 	left: 0;
@@ -471,6 +469,11 @@ a:hover{
   }
 
   /* contact.html */
-.imgs {
-  margin : 20px;
+  .contact-p{
+    text-align: center;
+    margin: 5vw;
+  }
+
+.img-carousel {
+  text-align: center;
 }
