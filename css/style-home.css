@@ -29,8 +29,6 @@ body {
 }
 
 .under-pic {
-
-
   grid-column: 1 / -1;
   grid-row: 2 / 3;
   text-align: center;
@@ -46,9 +44,6 @@ body {
   line-height: 20px;
 }
 
-.more-aboutme {
-  display: none;
-}
 
 .recentNews a, .under-pic a, .more a {
   color: #5c5b5a;
