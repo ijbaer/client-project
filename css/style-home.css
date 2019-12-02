@@ -28,30 +28,30 @@ body {
   font-size: 15px;
 }
 
-.under-pic {
+.under-pic { display: none;}
+#under-pic-link {
   grid-column: 1 / -1;
   grid-row: 2 / 3;
-  text-align: center;
   line-height: 18px;
-
+  text-align: center;
 }
 
 .recentNews {
   grid-column: 1 / -1;
   grid-row: 3 / 4;
   justify-self: center;
-  text-align: center;
+  text-align: left;
   line-height: 20px;
 }
 
 
-.recentNews a, .under-pic a, .more a {
+.recentNews a, #under-pic-link a, .more a {
   color: #5c5b5a;
   text-decoration: none;
   border-bottom: 1px dashed rgb(252, 26, 113);
 }
 
-.recentNews a:hover, .under-pic a:hover, .more a:hover{
+.recentNews a:hover, #under-pic-link a:hover, .more a:hover{
   color: rgb(252, 26, 113);
   text-decoration: none;
   border-bottom: 1px solid rgb(252, 26, 113);
@@ -83,7 +83,7 @@ body {
   text-align: center;
 }
 
-@media screen and (min-width: 1000px){
+@media screen and (min-width: 960px){
 
 
   .container-home {
@@ -119,11 +119,18 @@ body {
   }
 
   .under-pic {
-
-    margin: 100px;
+    text-align: center; 
+    display: inline-block;
+    margin: 100px 100px 0 100px;
     line-height: 25px;
     position: relative;
     top: -50px;
+  }
+  #under-pic-link {
+    text-align: center; 
+    display: inline-block;
+    margin-left: 100px;
+    
   }
 
   .recentNews {
@@ -152,4 +159,6 @@ body {
   .more-image {
     width: 350px;
   }
+  .recentNews { text-align: center;}
+  
 }
