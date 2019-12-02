@@ -63,9 +63,7 @@ p#dates{
 
 }
 
-.publications{
-    /* padding: 20px; */
-}
+
 
 a{
     color: rgb(53, 50, 50);
@@ -137,6 +135,9 @@ a:hover{
 }
 
 /* Selected Press */
+.selectedpress {
+    grid-column-start: 2;
+}
 #selectedpress-header{
     text-align: center;
     font-size: 30px;
@@ -147,9 +148,7 @@ a:hover{
     text-transform: uppercase;
 }
 
-.selectedpress{
-    /* padding: 20px; */
-}
+
 
 #press18{
     background: lightgray;
