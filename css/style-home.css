@@ -33,7 +33,9 @@ body {
   grid-column: 1 / -1;
   grid-row: 2 / 3;
   line-height: 18px;
-  text-align: center;
+  text-align: left;
+  position: relative;
+  left: 10px;
 }
 
 .recentNews {
@@ -130,11 +132,13 @@ body {
   }
 
   #under-pic-link a{
-    text-align: center;
     display: inline-block;
-    /* margin-left: 100px; */
     justify-self: center;
 
+  }
+
+  #under-pic-link {
+    text-align: center;
   }
 
   .recentNews {
