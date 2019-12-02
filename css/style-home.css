@@ -68,19 +68,25 @@ body {
   grid-template: auto;
   grid-template-rows: auto auto;
   grid-row-gap: 30px;
+  margin: 20px;
 
 }
 
 .more-image {
   grid-column: 1 / -1;
   grid-row: 1 / 2;
-  width: 175px;
+  width: 200px;
   align-items: center;
   justify-self: center;
   border: 2px solid black;
 
 }
 
+.more p {
+  margin-bottom: 20px;
+  line-height: 20px;
+  text-align: center;
+}
 
 @media screen and (min-width: 1000px){
 
@@ -134,5 +140,21 @@ body {
   }
   body {
     font-size: 18px;
+  }
+
+  .container-more {
+    width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .more p {
+    margin-bottom: 30px;
+    line-height: 25px;
+    text-align: center;
+  }
+
+  .more-image {
+    width: 350px;
   }
 }
