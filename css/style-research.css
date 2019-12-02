@@ -1,6 +1,6 @@
 /* Research */
 body{
-    background-image: url(../images/background5.jpg);
+    /* background-image: url(../images/background5.jpg); */
     font-size: 18px;
     margin: 0;
     padding: 0;
@@ -44,7 +44,14 @@ nav .current{
     justify-content: space-around;
 }
 
-p#dates{
+.scrollinfo{
+    display: none;
+}
+.scrollinfo-m a{
+    margin-left: 20px;
+}
+
+.dates{
     text-align: center;
     font-size: 25px;
     background: rgba(252, 26, 113);
@@ -63,9 +70,7 @@ p#dates{
 
 }
 
-.publications{
-    /* padding: 20px; */
-}
+
 
 a{
     color: rgb(53, 50, 50);
@@ -147,9 +152,7 @@ a:hover{
     text-transform: uppercase;
 }
 
-.selectedpress{
-    /* padding: 20px; */
-}
+
 
 #press18{
     background: lightgray;
@@ -179,14 +182,13 @@ a:hover{
     padding-left: 20px;
 }
 
-@media screen and (min-width: 1000px){
+@media screen and (min-width: 960px){
     .container-research{
         display: grid;
         grid-template-columns: 15% 85%;
         grid-template-rows: auto auto;
         justify-content: space-around;
     }
-    
     .scrollinfo{
         grid-column: 1/2;
         grid-row: 1;
@@ -203,33 +205,8 @@ a:hover{
         grid-row: 2;
     }
     /* Publications */
-    /* #pub19{
-        background: lightgray;
-        padding-top: 20px;
-        padding-right: 20px;
-        padding-left: 20px;
-    }
-    
-    #pub18{
-        background: lightgray;
-        padding-top: 20px;
-        padding-right: 20px;
-        padding-left: 20px;
-    }
-    
-    #pub17{
-        background: lightgray;
-        padding-top: 20px;
-        padding-right: 20px;
-        padding-left: 20px;
-    }
-    
-    #pub16{
-        background: lightgray;
-        padding-top: 20px;
-        padding-right: 20px;
-        padding-left: 20px;
-    }
+        /* padding-left: 20px;
+    } */
     
     #pub15{
         background: lightgray;
