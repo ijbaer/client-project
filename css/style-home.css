@@ -4,13 +4,12 @@ body {
 }
 
 .container-home {
-
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto auto;
   grid-row-gap: 20px;
-}
 
+}
 
 .home-image {
 
@@ -20,6 +19,7 @@ body {
   align-items: center;
   justify-self: center;
   border: 2px solid black;
+
 }
 
 .aboutme {
@@ -30,9 +30,11 @@ body {
 
 .under-pic {
 
-  grid-column: 1 / 3;
+
+  grid-column: 1 / -1;
   grid-row: 2 / 3;
   text-align: center;
+  line-height: 18px;
 
 }
 
@@ -41,33 +43,73 @@ body {
   grid-row: 3 / 4;
   justify-self: center;
   text-align: center;
+  line-height: 20px;
 }
 
 .more-aboutme {
   display: none;
 }
 
+.recentNews a, .under-pic a, .more a {
+  color: #5c5b5a;
+  text-decoration: none;
+  border-bottom: 1px dashed rgb(252, 26, 113);
+}
+
+.recentNews a:hover, .under-pic a:hover, .more a:hover{
+  color: rgb(252, 26, 113);
+  text-decoration: none;
+  border-bottom: 1px solid rgb(252, 26, 113);
+}
+
+.container-more {
+
+  display: grid;
+  grid-template: auto;
+  grid-template-rows: auto auto;
+  grid-row-gap: 30px;
+
+}
+
+.more-image {
+  grid-column: 1 / -1;
+  grid-row: 1 / 2;
+  width: 175px;
+  align-items: center;
+  justify-self: center;
+  border: 2px solid black;
+
+}
+
+
 @media screen and (min-width: 1000px){
 
-  .container-home {
 
+  .container-home {
+    width: 1300px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
     grid-row-gap: 20px;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .home-image {
     width: 225px;
     grid-column: 1 / 2;
     grid-row: 1 / 2;
+    position: relative;
+    top: 110px;
   }
 
   .aboutme {
     font-size: 18px;
-    margin: 50px;
+    margin: 100px;
     text-align: center;
-
+    line-height: 25px;
+    position: relative;
+    top: 30px;
   }
 
   .intro {
@@ -77,14 +119,17 @@ body {
 
   .under-pic {
 
-    margin: 50px;
-
+    margin: 100px;
+    line-height: 25px;
+    position: relative;
+    top: -50px;
   }
 
   .recentNews {
     grid-column: 2 / 3;
     grid-row: 1 / -1;
-    margin: 55px;
+    margin: 100px;
+    line-height: 25px;
 
   }
   body {
