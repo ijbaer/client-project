@@ -44,8 +44,9 @@
 
 			<div class="img-carousel">
 			<h2>Explore Your Horizons</h2><br>
-
+			<p id = "loading">photo loading...</p>
 			<div class="slideshow-container">
+				
 				<div class="mySlides fade">
 					<img class="images" src="images/travel1.jpeg" width="500" height="500" alt="travel photo"/>
 				  </div>
@@ -122,6 +123,7 @@
 			}
 
 			window.addEventListener("load",function() {
+				document.getElementsById("loading").style.display = "none";
 				showSlides(slideIndex);
 				myTimer = setInterval(function(){plusSlides(1)}, 4000);
 			})
