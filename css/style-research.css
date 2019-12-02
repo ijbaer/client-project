@@ -182,9 +182,25 @@ a:hover{
 @media screen and (min-width: 1000px){
     .container-research{
         display: grid;
-        grid-template-columns: 20% 80%;
+        grid-template-columns: 15% 85%;
         grid-template-rows: auto auto;
         justify-content: space-around;
+    }
+    
+    .scrollinfo{
+        grid-column: 1/2;
+        grid-row: 1;
+        position: fixed;
+    }
+
+    .publications{
+        grid-column: 2/3;
+        grid-row: 1;
+    }
+
+    .selectedpress{
+        grid-column: 2/3;
+        grid-row: 2;
     }
     /* Publications */
     /* #pub19{
