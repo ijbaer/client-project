@@ -493,3 +493,8 @@ a:hover{
 		animation: none !important;
 		}
   }
+
+  /* contact.html */
+.imgs {
+  margin : 20px;
+}
