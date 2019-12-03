@@ -430,7 +430,9 @@ a:hover{
 		margin: 40px;
 		/* margin-top: 0px; */
 		position: fixed;
-		z-index: 100;
+		z-index: 1;
+		top: 0;
+    	padding-top: 120px;
 	}
 	#publications {
 		margin-left: 20%;
