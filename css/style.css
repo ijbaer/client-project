@@ -145,7 +145,7 @@ footer .social-icons > li:hover a{color:#fff}
   grid-row: 3 / 4;
   justify-self: center;
   text-align: left;
-  line-height: 20px;
+  /* line-height: 20px; */
 }
 
 
