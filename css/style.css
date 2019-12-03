@@ -486,6 +486,7 @@ a:hover{
 .contact-p{
 	text-align: center;
 	margin: 5vw;
+	overflow-wrap: break-word;
 }
 
 .img-carousel{
