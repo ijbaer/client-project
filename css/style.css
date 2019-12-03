@@ -427,12 +427,10 @@ a:hover{
   /* scroll */
 	.scrollinfo{
 		display: inline;
-		margin: 40px;
-		/* margin-top: 0px; */
+		margin: 10px 60px 0px 60px;
 		position: fixed;
 		z-index: 1;
-		top: 0;
-    padding-top: 120px;
+    bottom:50px;
 	}
 	#publications {
 		margin-left: 20%;
