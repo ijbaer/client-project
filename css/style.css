@@ -476,9 +476,8 @@ a:hover{
 
 .img-carousel{
   text-align: center;
+  overflow:hidden;
 }
-
-
 
 /* Slideshow container */
 .slideshow-container {
