@@ -4,11 +4,11 @@ html{
 }
 body{
   /* font-size: 18px; */
-  margin: 0;
-  padding: 0;
-  color: black;
-  font-size: 1rem;
-  line-height: 1.5;
+	margin: 0;
+	padding: 0;
+	color: black;
+	font-size: 1rem;
+	line-height: 1.5;
 }
 
 h1 {
@@ -17,14 +17,15 @@ h1 {
     font-weight: bold;
 }
 h3 {
-  font-weight: 500;
+  	font-weight: 500;
 }
+
 p{
-  margin:10px;
+	margin: 10px;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
-.contact-p{
-  margin: 5vw;
-}
+
 .skip a{
 	background: white;
 	left: 0;
@@ -38,9 +39,9 @@ p{
 
 .skip :focus{
 	top: 0;
-  }
+}
 
-  nav{
+nav{
     padding-top: 20px;
     padding-bottom: 20px;
 }
@@ -64,22 +65,28 @@ nav a:hover{
     color: rgb(252, 26, 113);
 }
 nav .nav-active {
-  font-weight: bold;
-  text-shadow: 1px 1px rgb(170, 169, 169);
+  	font-weight: bold;
+  	text-shadow: 1px 1px rgb(170, 169, 169);
 }
 
 /* header */
-header {margin: 5vw; border-bottom: 2px solid lightgrey;}
+header {
+	margin: 5vw; border-bottom: 2px solid lightgrey;
+}
 @media screen and (min-width: 960px){
-  header {margin: 2vw;}
-  header nav ul{ text-align: right; }
-  .contact-p{
-    margin: 2vw;
-  }
+  	header {
+		margin: 2vw;
+	}
+  	header nav ul { 
+		text-align: right; 
+	}
+	.contact-p{
+		margin: 2vw;
+	}
   
-  nav li{
-    display: inline-block;
-  }
+  	nav li {
+		display: inline-block;
+  	}
 }
 
 /* footer */
@@ -155,7 +162,6 @@ footer .social-icons > li:hover a{color:#fff}
 }
 
 .container-more {
-
   display: grid;
   grid-template: auto;
   grid-template-rows: auto auto;
@@ -412,33 +418,39 @@ a:hover{
 }
 
 @media screen and (min-width: 960px){
-  .container-research{
-      display: grid;
-      grid-template-columns: 20% 80%;
-      grid-template-rows: auto auto;
-      justify-content: space-around;
-  }
+	.container-research{
+		display: contents;
+		/* grid-template-columns: 20% 80%;
+		grid-template-rows: auto auto;
+		justify-content: space-around; */
+	}
   /* scroll */
-  .scrollinfo{
-      display: inline;
-      margin: 20px;
-  }
-
-  #selectedpress {
-      grid-column-start: 2;
-      /* grid-row-start:2; */
-  }
-  .scrollinfo-m{
-      display: none;
-  }
-  .res {
-      display: inline-block;
-      text-decoration: none;
-      font-size: 16px;
-      border:none;
-      color:gray;
-      margin-left: 20px;
-  }
+	.scrollinfo{
+		display: inline;
+		margin: 40px;
+		/* margin-top: 0px; */
+		position: fixed;
+		z-index: 100;
+	}
+	#publications {
+		margin-left: 20%;
+	}
+	#selectedpress {
+		/* grid-column-start: 2; */
+		margin-left: 20%;
+		/* grid-row-start:2; */
+	}
+  	.scrollinfo-m{
+    	display: none;
+  	}
+  	.res {
+		display: inline-block;
+		text-decoration: none;
+		font-size: 16px;
+		border:none;
+		color:gray;
+		margin-left: 20px;
+  	}
 }
 
 @media screen and (prefers-reduced-motion: reduce){
@@ -447,18 +459,18 @@ a:hover{
 	}
   
 	.skip a{
-	  background: white;
-	  left: 0;
-	  padding: 6px;
-	  position: absolute;
-	  top: -40px;
-	  -webkit-transition: none;
-	  transition: none;
-	  z-index: 1;
+		background: white;
+		left: 0;
+		padding: 6px;
+		position: absolute;
+		top: -40px;
+		-webkit-transition: none;
+		transition: none;
+		z-index: 1;
 	}
   
 	.skip a:focus{
-	  top: 0;
+	  	top: 0;
 	}
 	*, :before, :after {
 		/*CSS transitions*/
@@ -467,10 +479,62 @@ a:hover{
 		transform: none !important;
 		/*CSS animations*/
 		animation: none !important;
-		}
+	}
   }
 
   /* contact.html */
-.imgs {
-  margin : 20px;
+.contact-p{
+	text-align: center;
+	margin: 5vw;
+}
+
+.img-carousel{
+  	text-align: center;
+  	overflow:hidden;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  	max-width: 1000px;
+  	position: relative;
+  	margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  	display: none;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+	cursor: pointer;
+	height: 15px;
+	width: 15px;
+	margin: 0 2px;
+	background-color: #bbb;
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  	background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+	-webkit-animation-name: fade;
+	-webkit-animation-duration: 1.5s;
+	animation-name: fade;
+	animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+	from {opacity: .4}
+	to {opacity: 1}
+}
+
+@keyframes fade {
+	from {opacity: .4}
+	to {opacity: 1}
 }

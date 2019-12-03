@@ -6,10 +6,11 @@ h2 {
 	font-size: 25px;
   }
 
-  div {
+  .w3-content w3-section {
 	padding: 60px;
 	background: white;
-	color: rgb(8, 8, 8);
+    color: rgb(8, 8, 8);
+    display: block;
   }
 
 
