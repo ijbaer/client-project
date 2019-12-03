@@ -70,8 +70,6 @@ nav .current{
 
 }
 
-
-
 a{
     color: rgb(53, 50, 50);
     border-bottom: 1px dashed rgb(252, 26, 113);
@@ -152,8 +150,6 @@ a:hover{
     text-transform: uppercase;
 }
 
-
-
 #press18{
     background: lightgray;
     padding-top: 20px;
@@ -205,10 +201,8 @@ a:hover{
         grid-row: 2;
     }
     /* Publications */
-        /* padding-left: 20px;
-    } */
-    
-    #pub15{
+
+    /* #pub15{
         background: lightgray;
         padding-top: 20px;
         padding-right: 20px;
@@ -234,7 +228,7 @@ a:hover{
         padding-top: 20px;
         padding-right: 20px;
         padding-left: 20px;
-    } */
+    }  */
     /* Selected Press  */
     /* #press18{
         background: whitesmoke;
