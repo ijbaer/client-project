@@ -92,7 +92,7 @@ header {
 /* footer */
 footer{ margin-top: 20px;font-size:11pt;background-color:rgb(211, 211, 211); padding-top:20px}
 
-footer h4{ color: black;display:block; text-align: center; line-height: 15pt;}
+footer h3{ color: black;display:block; text-align: center; line-height: 15pt;}
 
 footer .social-icons { text-align:center; }
 
